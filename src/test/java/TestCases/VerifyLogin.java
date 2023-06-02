@@ -8,6 +8,7 @@ import org.testng.asserts.SoftAssert;
 
 import PageObjectModels.LoginPageObjects;
 import resources.baseClass;
+import resources.commonMethods;
 import resources.constants;
 
 public class VerifyLogin  extends baseClass{
@@ -18,23 +19,21 @@ public class VerifyLogin  extends baseClass{
 	 public void login(String uname,String password) throws IOException {
 		  
 		  
-		  LoginPageObjects obj=new LoginPageObjects(driver);
+LoginPageObjects obj=new LoginPageObjects(driver);
+
+commonMethods.handleAssertions(driver.getCurrentUrl(), "https://login.salesforc.com/", "url is not matching");
 		  obj.enterUsername().sendKeys(uname);
 		  
 		  obj.enterPassword().sendKeys(password);
 		  
 		  obj.clickOnLogin().click();
 		  
-		  //commonMethods.handleAssertions(password, uname, password);
+		  commonMethods.handleAssertions(obj.errorText().getText(), constants.exceptedErroeMEssage,"error message is not matchimg");
+
+
+		 
+  
 		  
-		  SoftAssert a=new SoftAssert();
-		  String actual=obj.errorText().getText();
-		    
-		  String expected="Please check your password. If you still can't log in, contact your Salesforce administrator.";
-		  
-		  a.assertEquals(actual, expected,"Error message is not matching");
-		  
-		     a.assertAll();
 		    
 	 }
 	 

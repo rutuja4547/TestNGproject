@@ -10,6 +10,8 @@ public class singuPageObjects {
 	
 	private By firstName=By.xpath("//input[@name='UserFirstName']");
 	 private By employee=By.xpath("//select[@name='CompanyEmployees']");
+	 private By country=By.xpath("//select[@name='CompanyCountry']");
+
 	 
 	 
 	 public singuPageObjects(WebDriver driver2) {
@@ -25,5 +27,9 @@ public class singuPageObjects {
 		  
 		  return driver.findElement(employee);
 		 }
+		   public WebElement selectCountry() {
+			   
+			   return driver.findElement(country);
+			  }
 
 }

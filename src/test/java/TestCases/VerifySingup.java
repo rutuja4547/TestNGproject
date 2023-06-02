@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import PageObjectModels.LoginPageObjects;
 import PageObjectModels.singuPageObjects;
 import resources.baseClass;
+import resources.commonMethods;
 import resources.constants;
 
 public class VerifySingup extends baseClass{
@@ -24,8 +25,19 @@ public class VerifySingup extends baseClass{
 
 		   spo.enterFirstname().sendKeys(constants.firstname);
 
-		   Select s=new Select(spo.selectEmployee());
+		   /*Select s=new Select(spo.selectEmployee());
 		   s.selectByIndex(1);
+		   
+		   Select s1=new Select(spo.selectCountry());
+		   s1.selectByIndex(1);
+		   */
+		   
+		   
+		   commonMethods.selectDropdown(spo.selectEmployee(), 1);
+		   
+		   commonMethods.selectDropdown(spo.selectCountry(), 2);
+		   
+		   
 		   
 }
 }
